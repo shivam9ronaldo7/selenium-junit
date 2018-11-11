@@ -1,9 +1,10 @@
-package com.utility.apachepoi;
+package com.utility;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Iterator;
 
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -14,27 +15,37 @@ public class WriteXLSX {
 
 	//Giving path of the file
 	String xlsxFilePath = "C:\\Users\\student_v\\Desktop\\myFile.xlsx";
-
+	
 	XSSFWorkbook myWorkbook;
 	XSSFSheet mySheet;
 	XSSFRow myRow;
 	XSSFCell myCell;
 	
 	void writeIntoXSSFWorkbook() {
+		
+		String[] strArr = {"Shivam","Pratap","Singh"};
 
 		//Creating a blank workbook
 		myWorkbook = new XSSFWorkbook();
 
-		//Creating new worksheet
+		//Creating new worksheet		
 		mySheet = myWorkbook.createSheet("My 1st Sheet");
-
+		
+		for(int i=0;i<strArr.length;++i) {
+			myRow = mySheet.createRow(i);
+			for(int j=0;j<strArr.length;++j) {
+				myCell = myRow.createCell(j);
+				myCell.setCellValue(strArr[j]);
+			}
+		}
+		
 		//Creating new row
-		myRow = mySheet.createRow(0);
+		//myRow = mySheet.createRow(0);
 
 		//Create new cell
-		myCell = myRow.createCell(0);
+		//myCell = myRow.createCell(0);
 
-		myCell.setCellValue("Shivam");
+		//myCell.setCellValue("Shivam");
 
 	}
 	
